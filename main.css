@@ -24,13 +24,14 @@ a {
 body {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100dvh;
+    position: relative;
 }
 
 img {
     width: auto;
     height: auto;
-    max-width: 90vmin;
+    max-width: 90dvmin;
     max-height: 50%;
 }
 
@@ -183,7 +184,7 @@ td:nth-child(2) {
 footer > p:last-child {
   animation: tick 86400s linear infinite; 
   position: relative;
-  left: calc(100vw * max(0, 1 - var(--time) / 100)); 
+  left: calc(100dvw * max(0, 1 - var(--time) / 100)); 
   font-size: large;
   font-weight: bold;
 }
