@@ -1,0 +1,193 @@
+/* reset */
+
+:root {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-size: inherit;
+}
+
+li, ul {
+    list-style: none;
+}
+a {
+    color: inherit;
+    text-wrap: nowrap;
+    font-weight: bold;
+}
+
+/* basic layout */
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+img {
+    width: auto;
+    height: auto;
+    max-width: 90vmin;
+    max-height: 50%;
+}
+
+header {
+    background: rgb(0, 149, 69);
+    color: rgb(92%, 92%, 92%);
+    padding: 1ex 0.5em 1ex 0.5em;
+}
+main {
+    background: linear-gradient(
+        rgb(0,   149, 69) 0%, 
+        rgb(170, 220, 193) 5%,
+        white 20%,
+        white 80%, 
+        rgb(239, 182, 185) 95%,
+        rgb(205, 33, 42) 100%
+    );
+    flex: auto;
+    overflow: scroll;
+    scroll-snap-type: y mandatory;
+}
+footer {
+    background: rgb(205, 33, 42);
+    flex: 0 0 auto;
+    color: rgb(92%, 92%, 92%);
+    padding: 0ex 1ex 1ex 1ex;
+}
+h1 {
+    font-size: x-large;
+}
+h2 {
+    text-align: center;
+    font-size: large;
+    padding-top: 1ex;
+    padding-bottom: 1ex;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header hgroup {
+    padding: 0.5em 1em;
+    border: 4px solid white;
+    border-radius: 1em;
+    text-align: center;
+}
+
+
+/* pizza slides */
+
+section {
+    height: 100%;
+    margin: auto;
+    scroll-snap-align: start;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+    /* subtitle with pricing */
+
+section > hgroup > h2 {
+    padding-bottom: 0;
+}
+section > hgroup > p {
+    margin-top: 0ex;
+    margin-bottom: 0.5ex;
+    padding-left: .5em;
+    padding-right: .5em;
+    text-align: center;
+}
+
+    /* ingredient list */
+
+section ul {
+    padding: 1ex;
+}
+section ul:before {
+    content: "Ingredientes: ";
+    font-variant: small-caps;
+    font-weight: bold;
+}
+
+
+@media (orientation: landscape) {
+    section {
+        flex-direction: row;
+        position: relative;
+    }
+    section ul {
+        padding-top: 0;
+    }
+    section > hgroup {
+        flex: 0 0 100%;
+    }
+    section > * {
+        align-self: flex-start;
+    }
+    section li {
+        line-height: 1;
+    }
+}
+
+
+
+@media (orientation: portrait) {
+    section {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    section > hgroup {
+        margin-top: 3ex;
+        margin-bottom: 1ex;
+    }
+    section li {
+        display: inline;
+    }
+    section ul {
+        text-align: justify;
+    }
+    li:not(:last-child)::after {
+        content: ", ";
+    }
+}
+
+/* Delivery, otros */
+
+td:nth-child(2) {
+    text-align: right;
+    padding-left: 2em;
+}
+
+/* Animations */
+
+/* Ticks hundredths of seconds to get 100 fps animations if needed */
+
+@property --time {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: true;
+}
+@keyframes tick {
+  from { --time: 0 }
+  to   { --time: 8640000 }
+}
+footer > p:last-child {
+  animation: tick 86400s linear infinite; 
+  position: relative;
+  left: calc(100vw * max(0, 1 - var(--time) / 100)); 
+  font-size: large;
+  font-weight: bold;
+}
+footer > p:last-child::before {
+  content: "✆ ";
+  font-size: x-large;
+}

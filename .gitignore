@@ -1,0 +1,4 @@
+# vi swap files and other backups
+*.swo
+*.swp
+*.bak
