@@ -49,8 +49,9 @@ img {
 header {
     background: rgb(0, 149, 69);
     color: rgb(92%, 92%, 92%);
-    padding: 1ex 0.5em 1ex 0.5em;
+    padding: 0.0ex 0.5em 0.5ex 0.5em;
 }
+
 main {
     background: linear-gradient(
         rgb(0,   149, 69) 0%, 
@@ -87,7 +88,7 @@ header {
 }
 
 header hgroup {
-    padding: 0.5em 1em;
+    padding: 0.5ex 1em;
     border-bottom: 4px solid white;
     border-radius: 1em;
     text-align: center;
@@ -101,7 +102,6 @@ section {
     margin: auto;
     scroll-snap-align: start;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
@@ -133,14 +133,20 @@ section ul:before {
 
 @media (orientation: landscape) {
     section {
+        padding-top: 1em;
         flex-direction: row;
         position: relative;
     }
-    section ul {
+    section ul, section hgroup, section h2 {
         padding-top: 0;
     }
+    section > hgroup > h2, section > hgroup > p {
+        text-align: left;
+        padding: 0;
+        margin: 0;
+    }
     section > hgroup {
-        flex: 0 0 100%;
+        flex: 0 1 30%;
     }
     section > * {
         align-self: flex-start;
@@ -195,11 +201,11 @@ td:nth-child(2) {
 footer > p:last-child {
   animation: tick 86400s linear infinite; 
   position: relative;
-  left: calc(100dvw * max(0, 1 - var(--time) / 100)); 
-  font-size: large;
-  font-weight: bold;
+  text-align: justify;
 }
-footer > p:last-child::before {
-  content: "✆ ";
-  font-size: x-large;
+header img {
+  width: 4em;
+  position: absolute;
+  right: 0em; /* calc(100dvw * max(0, 1 - var(--time) / 100)); */ 
+  top: 0em;
 }
