@@ -27,7 +27,8 @@ body {
     height: 100dvh;
     position: relative;
 }
-    
+
+    /* disable scrollbar */    
 main {
     -ms-overflow-style: none; 
     scrollbar-width: none;
