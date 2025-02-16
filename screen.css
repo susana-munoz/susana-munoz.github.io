@@ -1,0 +1,288 @@
+/* basic layout */
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    position: relative;
+}
+
+    /* disable scrollbar */    
+main {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+}
+main::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 0;
+    height: 0;
+}
+
+section img {
+    width: auto;
+    height: auto;
+}
+
+header {
+    position: relative;
+    background: rgb(0, 149, 69);
+    color: rgb(92%, 92%, 92%);
+    padding: 0.0ex 0.5em 0.5ex 0.5em;
+}
+
+header::after {
+    content: "";
+    background: linear-gradient(
+        rgba(  0, 149, 69, 1.00)   0%,
+        rgba(  0, 149, 69, 0.85)  10%,
+        rgba(  0, 149, 69, 0.65)  20%,
+        rgba(  0, 149, 69, 0.40)  40%,
+        rgba(  0, 149, 69, 0.15)  80%,
+        rgba(  0, 149, 69, 0.00) 100%
+    );
+    top: 100%;
+    position: absolute;
+    width: 100%;
+    height: 15dvh;
+    z-index: 999;
+}
+footer::before {
+    content: "";
+    background: linear-gradient(
+        rgba(205,  33, 42, 0.00)   0%,
+        rgba(205,  33, 42, 0.15)  20%,
+        rgba(205,  33, 42, 0.35)  60%,
+        rgba(205,  33, 42, 0.60)  80%,
+        rgba(205,  33, 42, 0.85)  90%,
+        rgba(205,  33, 42, 1.00) 100%
+    );
+    position: absolute;
+    bottom: 100%;
+    width: 100%;
+    height: 15vh;
+}
+main {
+    position: relative;
+    flex: auto;
+    overflow: scroll;
+    scroll-snap-type: y mandatory;
+}
+footer {
+    position: relative;
+    background: rgb(205, 33, 42);
+    flex: 0 0 auto;
+    color: rgb(92%, 92%, 92%);
+}
+footer p {
+    padding: 0ex 1ex 1ex 1ex;
+}
+header > hgroup {
+    font-size: 125%;
+}
+header > hgroup > h1 {
+    font-size: 150%;
+    font-variant: small-caps;
+}
+h2 {
+    text-align: center;
+    font-size: large;
+    font-variant: small-caps;
+    padding-top: 1ex;
+    padding-bottom: 1ex;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header hgroup {
+    padding: 0.5ex 1em;
+    border-bottom: 4px solid white;
+    border-radius: 1em;
+    text-align: center;
+}
+
+
+/* pizza slides */
+
+section {
+    height: 100%;
+    margin: auto;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    /* subtitle with pricing */
+
+section > hgroup > h2 {
+    padding-bottom: 0;
+}
+section > hgroup > p {
+    margin-top: 0ex;
+    margin-bottom: 0.5ex;
+    padding-left: .5em;
+    padding-right: .5em;
+    text-align: center;
+}
+
+    /* ingredient list */
+
+section ul {
+    padding: 1ex;
+}
+section ul:before {
+    content: "Ingredientes: ";
+    font-variant: small-caps;
+    font-weight: bold;
+}
+
+
+@media (orientation: landscape) {
+    section img {
+        max-height: min(400px, 75%);
+    }
+    section {
+        padding-top: 10dvh;
+        flex-direction: row;
+        position: relative;
+    }
+    section ul, section hgroup, section h2 {
+        padding-top: 0;
+    }
+    header h1, header p {
+        display: inline;
+    }
+    header p::before {
+        content: " — ";
+    }
+    section > hgroup > h2, section > hgroup > p {
+        text-align: left;
+        padding: 0 0 0 0.25em;
+        margin: 0;
+    }
+    section > hgroup {
+        flex: 0 1 30%;
+    }
+    section > * {
+        align-self: flex-start;
+    }
+    section li {
+        line-height: 1;
+    }
+}
+@media (width >= 1200px) {
+    section {
+        flex: 0 0 33.333%;
+    }
+}
+@media (900px <= width < 1200px) {
+    section {
+        flex: 0 0 50%;
+    }
+}
+
+@media (width > 900px) {
+    header > hgroup {
+        font-size: 150%;
+    }
+    header > hgroup > h1 {
+        font-size: 175%;
+        font-variant: small-caps;
+    }
+
+    main li {
+        display: inline;
+    } 
+    main li::after:not(:last-child) {
+        content: ", ";
+    }
+    main {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    } 
+    section {
+        flex-direction: column;
+        justify-content: flex-start; 
+    }
+    section > hgroup, section > img, section > table {
+        align-self: center; 
+        flex: 0 0 auto;
+        padding-bottom: 2ex;
+    }
+    section img {
+        max-height: min(400px, 50%);
+    }
+}
+
+@media (orientation: portrait) {
+    section {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    section img {
+        max-height: min(400px, 50%);
+    }
+    section > hgroup {
+        margin-top: 3ex;
+        margin-bottom: 1ex;
+    }
+    section li {
+        display: inline;
+    }
+    section ul {
+        text-align: justify;
+    }
+    li:not(:last-child)::after {
+        content: ", ";
+    }
+}
+
+/* Delivery, otros */
+
+td:nth-child(2) {
+    text-align: right;
+    padding-left: 2em;
+}
+
+/* Animations */
+
+/* Ticks hundredths of seconds to get 100 fps animations if needed */
+
+@property --time {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: true;
+}
+@keyframes tick {
+  from { --time: 0 }
+  to   { --time: 8640000 }
+}
+footer > p:last-child {
+  position: relative;
+  text-align: justify;
+}
+header img[src *= "wa"] {
+  animation: tick 86400s linear infinite; 
+  width: 4em;
+  position: absolute;
+  top: calc(50% - 2em);
+  right: 0.2em;
+  opacity: calc(1 - 0.5 * pow(cos(var(--time) / 80), 10)); 
+}
+header img[src *= "qr"] {
+  display: none;
+  width: 4em;
+  position: absolute;
+  top: calc(50% - 2em);
+  left: 0.2em;
+}
+footer a[href *= "tel:"]::before {
+    content: "☎  ";
+    font-size: larger;
+}

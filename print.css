@@ -1,0 +1,82 @@
+/* header */
+
+header {
+  height: 20ex;
+  position: relative;
+  background: rgb(0, 149, 69);
+  color: rgb(92%, 92%, 92%);
+  padding: 0.0ex 0.5em 0.5ex 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+
+header > hgroup {
+  text-align: center;
+  font-size: 150%;
+}
+header h1 {
+  font-size: 200%;
+}
+
+header img[src *= "wa"] {
+  display: none;
+}
+header img[src *= "qr"] {
+  height: calc(100% - 2ex);
+  position: absolute;
+  top: 1ex;
+  left: 1ex;
+}
+
+/* main */
+
+main {
+  display: block;
+}
+section img {
+  display: none;
+}
+section li {
+  display: inline;
+}
+section li::after:not(:last-child) {
+  content: ", ";
+}
+section ul {
+  display: block;
+}
+section hgroup {
+  display: flex;
+  justify-content: space-between;
+}
+section hgroup {
+  justify-self: baseline;
+  align-items: flex-end;
+  padding: 0;
+  margin: 0;
+}
+section hgroup > * {
+  display: inline-block;
+  padding: 0em;
+  margin: 0em;
+}
+section hgroup > * {
+  font-size: 150%;
+  font-variant: "small-caps";
+  font-weight: bold;
+}
+section ul {
+  padding: 0 0 1em 0;
+  margin: 0;
+}
+section ul::before {
+  content: "Ingredientes: ";
+  font-variant: "small-caps";
+  font-weight: bold;
+}
+* {
+  -webkit-print-color-adjust: exact;
+  printer-colors: exact !important;
+  color-adjust: exact !important;
+}
