@@ -297,7 +297,7 @@ header img {
   right: 0.2em;
   opacity: calc(1 - 0.5 * pow(cos(var(--time) / 80), 10)); 
 }
-footer a[href *= "https://wa.me/"]::before {
+footer a[href *= "tel:"]::before {
     content: "☎  ";
     font-size: larger;
 }
