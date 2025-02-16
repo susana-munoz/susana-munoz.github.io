@@ -32,7 +32,7 @@ body {
 main {
     -ms-overflow-style: none; 
     scrollbar-width: none;
-    scrollbar-color: transparent;
+    scrollbar-color: rgba(0%,0%,0%,0);
 }
 main::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -220,7 +220,7 @@ section ul:before {
     main li {
         display: inline;
     } 
-    main li::after::not(::last-child) {
+    main li::after:not(:last-child) {
         content: ", ";
     }
     main {
