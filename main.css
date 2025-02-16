@@ -231,15 +231,16 @@ td:nth-child(2) {
   to   { --time: 8640000 }
 }
 footer > p:last-child {
-  animation: tick 86400s linear infinite; 
   position: relative;
   text-align: justify;
 }
 header img {
+  animation: tick 86400s linear infinite; 
   width: 4em;
   position: absolute;
-  right: 0em; /* calc(100dvw * max(0, 1 - var(--time) / 100)); */ 
-  top: 0em;
+  top: calc(50% - 2em);
+  right: 0.2em;
+  opacity: calc(1 - 0.5 * pow(cos(var(--time) / 80), 10)); 
 }
 footer a[href *= "https://wa.me/"]::before {
     content: "☎  ";
