@@ -40,36 +40,62 @@ main::-webkit-scrollbar {
     height: 0;
 }
 
-img {
+section img {
     width: auto;
     height: auto;
-    max-width: 90dvmin;
-    max-height: 50%;
 }
 
 header {
+    position: relative;
     background: rgb(0, 149, 69);
     color: rgb(92%, 92%, 92%);
     padding: 0.0ex 0.5em 0.5ex 0.5em;
 }
 
-main {
+header::after {
+    content: "";
     background: linear-gradient(
-        rgb(0,   149, 69) 0%, 
-        rgb(170, 220, 193) 5%,
-        white 20%,
-        white 80%, 
-        rgb(239, 182, 185) 95%,
-        rgb(205, 33, 42) 100%
+        rgba(  0, 149, 69, 1.00)   0%,
+        rgba(  0, 149, 69, 0.85)  10%,
+        rgba(  0, 149, 69, 0.65)  20%,
+        rgba(  0, 149, 69, 0.40)  40%,
+        rgba(  0, 149, 69, 0.15)  80%,
+        rgba(  0, 149, 69, 0.00) 100%
     );
+    top: 100%;
+    position: absolute;
+    width: 100%;
+    height: 15dvh;
+    z-index: 999;
+}
+footer::before {
+    content: "";
+    background: linear-gradient(
+        rgba(205,  33, 42, 0.00)   0%,
+        rgba(205,  33, 42, 0.15)  20%,
+        rgba(205,  33, 42, 0.35)  60%,
+        rgba(205,  33, 42, 0.60)  80%,
+        rgba(205,  33, 42, 0.85)  90%,
+        rgba(205,  33, 42, 1.00) 100%
+    );
+    position: absolute;
+    bottom: 100%;
+    width: 100%;
+    height: 15vh;
+}
+main {
+    position: relative;
     flex: auto;
     overflow: scroll;
     scroll-snap-type: y mandatory;
 }
 footer {
+    position: relative;
     background: rgb(205, 33, 42);
     flex: 0 0 auto;
     color: rgb(92%, 92%, 92%);
+}
+footer p {
     padding: 0ex 1ex 1ex 1ex;
 }
 h1 {
@@ -78,6 +104,7 @@ h1 {
 h2 {
     text-align: center;
     font-size: large;
+    font-variant: small-caps;
     padding-top: 1ex;
     padding-bottom: 1ex;
 }
@@ -133,8 +160,11 @@ section ul:before {
 
 
 @media (orientation: landscape) {
+    section img {
+        max-height: min(400px, 75%);
+    }
     section {
-        padding-top: 1em;
+        padding-top: 10dvh;
         flex-direction: row;
         position: relative;
     }
@@ -143,7 +173,7 @@ section ul:before {
     }
     section > hgroup > h2, section > hgroup > p {
         text-align: left;
-        padding: 0;
+        padding: 0 0 0 0.5em;
         margin: 0;
     }
     section > hgroup {
@@ -157,12 +187,13 @@ section ul:before {
     }
 }
 
-
-
 @media (orientation: portrait) {
     section {
         flex-direction: column;
         justify-content: flex-start;
+    }
+    section img {
+        max-height: min(400px, 50%);
     }
     section > hgroup {
         margin-top: 3ex;
@@ -209,4 +240,8 @@ header img {
   position: absolute;
   right: 0em; /* calc(100dvw * max(0, 1 - var(--time) / 100)); */ 
   top: 0em;
+}
+footer a[href *= "https://wa.me/"]::before {
+    content: "☎  ";
+    font-size: larger;
 }
