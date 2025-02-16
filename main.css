@@ -32,6 +32,7 @@ body {
 main {
     -ms-overflow-style: none; 
     scrollbar-width: none;
+    scrollbar-color: transparent;
 }
 main::-webkit-scrollbar {
     -webkit-appearance: none;
